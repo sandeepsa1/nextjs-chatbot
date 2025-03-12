@@ -5,6 +5,11 @@ export default function Home() {
   const [conversation, setConversation] = useState([]);
 
   const startChat = async () => {
+    if (!prompt.trim()) {
+      alert("Please enter a prompt!");
+      return;
+    }
+
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
